@@ -1,11 +1,10 @@
-const EventEmitter = require('events');
+const School = require('./school');
 
-const emitter = new EventEmitter();
+const school = new School();
 
 // register a listener for bellRing event
-emitter.on('bellRing', (period) => {
-    console.log(`We need to run! ${period}`);
+school.on('bellRing', ({ period, text }) => {
+    console.log(`We need to run because ${period} ${text}`);
 });
 
-// raise an event
-emitter.emit('bellRing', 'second period ended');
+school.startPeriod();
